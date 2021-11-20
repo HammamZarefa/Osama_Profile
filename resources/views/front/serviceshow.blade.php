@@ -10,7 +10,7 @@
         <div class="d-flex justify-content-between align-items-center">
           <h2>{{ $service->title }}</h2>
           <ol>
-            <li><a href="/">Home</a></li>
+            <li><a href="/">{{ __('home.home') }}</a></li>
             <li>{{ $service->title }}</li>
           </ol>
         </div>

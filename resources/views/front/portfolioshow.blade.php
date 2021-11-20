@@ -8,10 +8,10 @@
       <div class="container">
 
         <div class="d-flex justify-content-between align-items-center">
-          <h2>Portfolio Details</h2>
+          <h2>{{ __('home.portfoliodetails') }} </h2>
           <ol>
-            <li><a href="/">Home</a></li>
-            <li>Portfolio Details</li>
+            <li><a href="/">{{ __('home.home') }} </a></li>
+            <li>{{ __('home.portfoliodetails') }} </li>
           </ol>
         </div>
 
@@ -28,11 +28,11 @@
           </div>
 
           <div class="portfolio-info">
-            <h3>Project information</h3>
+            <h3>{{ __('home.projectinformation') }}</h3>
             <ul>
-              <li><strong>Category</strong>:  {{ $portfolio->pcategory->name }}</li>
-              <li><strong>Client</strong>: {{ $portfolio->client }}</li>
-              <li><strong>Project date</strong>: {{ Carbon\Carbon::parse($portfolio->date)->format("d F, Y") }}</li>
+              <li><strong>{{ __('home.category') }}</strong>:  {{ $portfolio->pcategory->name }}</li>
+              <li><strong>{{ __('home.client') }}</strong>: {{ $portfolio->client }}</li>
+              <li><strong>{{ __('home.projectdate') }}</strong>: {{ Carbon\Carbon::parse($portfolio->date)->format("d F, Y") }}</li>
             </ul>
           </div>
 

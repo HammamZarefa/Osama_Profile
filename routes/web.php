@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\{BannerController, CategoryController, FaqController, FrontController, GeneralController, LinkController, PageController, PartnerController, PcategoryController, PortfolioController, PostController, ServiceController, TagController, TestimonialController, TeamController, UserController};
+use App\Http\Controllers\{BannerController, CategoryController, FaqController, FrontController, GeneralController,InverstmentController, LinkController, PageController, PartnerController, PcategoryController, PortfolioController, PostController, ServiceController, TagController, TestimonialController, TeamController, UserController,ComingSoonController};
 
 /*
 |--------------------------------------------------------------------------
@@ -13,10 +13,11 @@ use App\Http\Controllers\{BannerController, CategoryController, FaqController, F
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::get('lang/{locale}', [App\Http\Controllers\LocalizationController::class, 'index']);
 // Route::get('/', function () {
 //     return view('welcome');
 // });
+
 Route::get('/', [FrontController::class, 'home'])->name('homepage');
 Route::post('/', [FrontController::class, 'subscribe'])->name('subscribe');
 Route::get('about-us', [FrontController::class, 'about'])->name('about');
@@ -31,6 +32,8 @@ Route::get('blog/{slug}', [FrontController::class, 'blogshow'])->name('blogshow'
 Route::get('categories/{category:slug}',[FrontController::class, 'category'])->name('category');
 Route::get('tags/{tag:slug}',[FrontController::class, 'tag'])->name('tag');
 Route::get('pages/{slug}', [FrontController::class, 'page'])->name('page');
+Route::get('inverstment', [FrontController::class, 'inverstment'])->name('inverstment');
+Route::get('inverstment/{slug}', [FrontController::class, 'inverstmentshow'])->name('inverstmentshow');
 
 
 
@@ -74,6 +77,22 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::get('portfolio/edit/{id}', [PortfolioController::class, 'edit'])->name('admin.portfolio.edit');
     Route::post('portfolio/edit/{id}', [PortfolioController::class, 'update'])->name('admin.portfolio.update');
     Route::delete('portfolio/destroy/{id}',[PortfolioController::class, 'destroy'])->name('admin.portfolio.destroy');
+
+    // Manage Investment
+    Route::get('inverstment', [InverstmentController::class, 'index'])->name('admin.inverstment');
+    Route::get('inverstment/create', [InverstmentController::class, 'create'])->name('admin.inverstment.create');
+    Route::post('inverstment/create', [InverstmentController::class, 'store'])->name('admin.inverstment.store');
+    Route::get('inverstment/edit/{id}', [InverstmentController::class, 'edit'])->name('admin.inverstment.edit');
+    Route::post('inverstment/edit/{id}', [InverstmentController::class, 'update'])->name('admin.inverstment.update');
+    Route::delete('inverstment/destroy/{id}',[InverstmentController::class, 'destroy'])->name('admin.inverstment.destroy');
+
+    //manage ComingSoon
+    Route::get('comingsoon', [ComingSoonController::class, 'index'])->name('admin.comingsoon');
+    Route::get('comingsoon/create', [ComingSoonController::class, 'create'])->name('admin.comingsoon.create');
+    Route::post('comingsoon/create', [ComingSoonController::class, 'store'])->name('admin.comingsoon.store');
+    Route::get('comingsoon/edit/{id}', [ComingSoonController::class, 'edit'])->name('admin.comingsoon.edit');
+    Route::post('comingsoon/edit/{id}', [ComingSoonController::class, 'update'])->name('admin.comingsoon.update');
+    Route::delete('comingsoon/destroy/{id}',[ComingSoonController::class, 'destroy'])->name('admin.comingsoon.destroy');
 
      // Manage Categories
      Route::get('categories', [CategoryController::class, 'index'])->name('admin.category');

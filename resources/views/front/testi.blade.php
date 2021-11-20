@@ -8,10 +8,10 @@
       <div class="container">
 
         <div class="d-flex justify-content-between align-items-center">
-          <h2>Testimonials</h2>
+          <h2>{{ __('home.testimonials') }}</h2>
           <ol>
-            <li><a href="/">Home</a></li>
-            <li>Testimonials</li>
+            <li><a href="/">{{ __('home.home') }}</a></li>
+            <li>{{ __('home.testimonials') }}</li>
           </ol>
         </div>
 

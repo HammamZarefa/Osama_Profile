@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Investment;
 use Illuminate\Http\Request;
-use App\Models\{About, Banner, Category, Faq, General, Link, Page, Partner, Pcategory, Portfolio, Post, Tag, Team, Testimonial, Service, Subscriber};
+use App\Models\{About, Banner, Category, Faq, General, Link, Page, Partner, Pcategory, Portfolio, Post, Tag, Team, Testimonial, Service, Subscriber,ComingSoon};
 class FrontController extends Controller
 {
     public function home()
@@ -17,7 +18,9 @@ class FrontController extends Controller
         $pcategories = Pcategory::all();
         $portfolio = Portfolio::all();
         $service = Service::orderBy('title','asc')->get();
-        return view ('front.home',compact('about','banner','general','link','lpost','partner','pcategories','portfolio','service'));
+        $investment=Investment::all();
+        $comingSoon=ComingSoon::all();
+        return view ('front.home',compact('about','banner','general','link','lpost','partner','pcategories','portfolio','service','investment','comingSoon'));
     }
 
     public function about()

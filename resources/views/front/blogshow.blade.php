@@ -33,10 +33,10 @@
       <div class="container">
 
         <div class="d-flex justify-content-between align-items-center">
-          <h2>Blog</h2>
+          <h2>{{ __('home.blog') }}</h2>
           <ol>
-            <li><a href="/">Home</a></li>
-            <li>Blog</li>
+            <li><a href="/">{{ __('home.home') }}</a></li>
+            <li>{{ __('home.blog') }}</li>
           </ol>
         </div>
 
@@ -65,7 +65,7 @@
                 <ul>
                   <li class="d-flex align-items-center"><i class="icofont-user"></i> <a href="{{route('blogshow',$post->slug)}}">{{ $post->user->name }}</a></li>
                   <li class="d-flex align-items-center"><i class="icofont-wall-clock"></i> <a href="{{route('blogshow',$post->slug)}}"><time datetime="2020-01-01">{{ Carbon\Carbon::parse($post->created_at)->format("d F, Y") }}</time></a></li>
-                  <li class="d-flex align-items-center"><i class="icofont-comment"></i> <a href="{{ URL::current()}}#disqus_thread">Comments</a></li>
+                  <li class="d-flex align-items-center"><i class="icofont-comment"></i> <a href="{{ URL::current()}}#disqus_thread">{{ __('home.comments') }}</a></li>
                 </ul>
               </div>
 
@@ -106,7 +106,7 @@
 
             <div class="sidebar" data-aos="fade-left">
 
-              <h3 class="sidebar-title">Search</h3>
+              <h3 class="sidebar-title">{{ __('home.search') }}</h3>
               <div class="sidebar-item search-form">
                 <form action="{{ route("search") }}" method="GET">
                   <input type="text" name="query">
@@ -115,7 +115,7 @@
 
               </div><!-- End sidebar search formn-->
 
-              <h3 class="sidebar-title">Categories</h3>
+              <h3 class="sidebar-title">{{ __('home.categories') }}</h3>
               <div class="sidebar-item categories">
                 <ul>
                   @foreach ($categories as $category)
@@ -125,7 +125,7 @@
 
               </div><!-- End sidebar categories-->
 
-              <h3 class="sidebar-title">Recent Posts</h3>
+              <h3 class="sidebar-title">{{ __('home.recentposts') }}</h3>
               <div class="sidebar-item recent-posts">
 
                 @foreach ($recent as $recent)
@@ -138,7 +138,7 @@
               
               </div><!-- End sidebar recent posts-->
 
-              <h3 class="sidebar-title">Tags</h3>
+              <h3 class="sidebar-title">{{ __('home.tags') }}</h3>
               <div class="sidebar-item tags">
                 <ul>
                   @foreach ($tags as $tag)

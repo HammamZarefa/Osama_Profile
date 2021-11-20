@@ -1,6 +1,9 @@
 <!DOCTYPE html>
+@if(session()->get('locale')==='ar')
+  <html lang="ar" dir="rtl">
+@else
 <html lang="en">
-
+@endif
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -31,8 +34,12 @@
   <link href="{{ asset('front/vendor/remixicon/remixicon.css') }}" rel="stylesheet">
 
   <!-- Template Main CSS File -->
-  <link href="{{ asset('front/css/style.css') }}" rel="stylesheet">
-  
+  @if(session()->get('locale')==='ar')
+    <link href="{{ asset('front/css/style-ar.css') }}" rel="stylesheet">
+  @else
+    <link href="{{ asset('front/css/style-en.css') }}" rel="stylesheet">
+  @endif
+      
   {{-- Sharethis --}}
   {!! $general->sharethis !!}
 
@@ -50,7 +57,7 @@
   <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
 
-      <a href="/" class="logo mr-auto"><img src="{{ asset('storage/'.$general->logo) }}" alt="" class="img-fluid"></a>
+      <a href="/" class="logo"><img src="{{ asset('storage/'.$general->logo) }}" alt="" class="img-fluid"></a>
 
       <nav class="nav-menu d-none d-lg-block">
         <ul>
@@ -74,9 +81,28 @@
         <a href="{{ $general->twitter }}" target="_blank" class="twitter"><i class="icofont-twitter"></i></a>
         <a href="{{ $general->facebook }}" target="_blank" class="facebook"><i class="icofont-facebook"></i></a>
         <a href="{{ $general->instagram }}" target="_blank" class="instagram"><i class="icofont-instagram"></i></a>
-        <a href="{{ $general->linkedin }}" target="_blank" class="linkedin"><i class="icofont-linkedin"></i></i></a>
+        <a href="{{ $general->linkedin }}" target="_blank" class="linkedin"><i class="icofont-linkedin"></i></a>
       </div>
+      @php $locale = session()->get('locale'); @endphp
+      {{--<li class="nav-item dropdown">--}}
 
+          @switch($locale)
+            @case('en')
+            <a class="lang" href="lang/ar"> <img src="{{asset('front/img/flag/ar.jpg')}}" width="25px"> ع </a>
+            @break
+            @case('ar')
+            <a class="lang" href="lang/en"> <img src="{{asset('front/img/flag/en.jpg')}}" width="25px"> EN </a>
+            @break
+            @default
+            <a class="lang" href="lang/ar"> <img src="{{asset('front/img/flag/en.jpg')}}" width="25px"> ع </a>
+          @endswitch
+          {{--<span class="caret"></span>--}}
+
+        {{--<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">--}}
+          {{--<a class="dropdown-item" href="lang/en"><img src="{{asset('images/flag/ar.png')}}" width="25px"> English</a>--}}
+          {{--<a class="dropdown-item" href="lang/ar"><img src="{{asset('images/flag/ar.png')}}" width="25px"> Arabic</a>--}}
+        {{--</div>--}}
+      {{--</li>--}}
     </div>
   </header><!-- End Header -->
 
@@ -90,20 +116,20 @@
         <div class="row">
 
           <div class="col-lg-3 col-md-6 footer-contact">
-            <h3>Company</h3>
+            <h3>{{ __('home.company') }}</h3>
             <p>
               {{ $general->address1 }} <br>
               {{ $general->address2 }}<br>
-              <a href="{{ $general->gmaps }}" target="_blank" rel="noopener noreferrer">(Go to gmaps)</a>
+              <a href="{{ $general->gmaps }}" target="_blank" rel="noopener noreferrer">{{ __('home.gotogmaps') }}</a>
               <br><br>
               
-              <strong>Phone:</strong> {{ $general->phone }}<br>
-              <strong>Email:</strong> {{ $general->email }}<br>
+              <strong>{{ __('home.phone') }}</strong> {{ $general->phone }}<br>
+              <strong>{{ __('home.email') }}</strong> {{ $general->email }}<br>
             </p>
           </div>
 
           <div class="col-lg-2 col-md-6 footer-links">
-            <h4>Useful Links</h4>
+            <h4>{{ __('home.usefullinks') }}</h4>
             <ul>
               @foreach ($link as $link)
               <li><i class="bx bx-chevron-right"></i> <a href="{{ $link->link }}">{{ $link->name }}</a></li>
@@ -113,18 +139,27 @@
           </div>
 
           <div class="col-lg-3 col-md-6 footer-links">
-            <h4>Latest Posts</h4>
+            <h4>{{ __('home.latestposts') }}</h4>
             <ul>
               @foreach ($lpost as $lpost)
-              <li><i class="bx bx-chevron-right"></i> <a href="{{ route('blogshow',$lpost->slug) }}">{{ $lpost->title }}</a></li>
-              @endforeach
+              <li>
+               @if(session()->get('locale')==='ar')
+                <a href="{{ route('blogshow',$lpost->slug) }}">{{ $lpost->title }}</a>
+                <i class="bx bx-chevron-left"></i> 
+               @else
+                <a href="{{ route('blogshow',$lpost->slug) }}">{{ $lpost->title }}</a>
+                <i class="bx bx-chevron-right"></i> 
+                @endif
+                @endforeach
+              </li>
+            
              
             </ul>
           </div>
 
           <div class="col-lg-4 col-md-6 footer-newsletter">
-            <h4>Join Our Newsletter</h4>
-            <p>Subscribe to the latest article updates via email</p>
+            <h4>{{ __('home.joinournewsletter') }}</h4>
+            <p>{{ __('home.subscribetothelatestarticleupdatesviaemail') }}</p>
             @if (session('success'))
 
             <div class="alert alert-success">
@@ -137,7 +172,7 @@
 
             <form action="{{ route('subscribe') }}" method="post">
               @csrf
-              <input type="email" name="email" class="form-control {{$errors->first('email') ? "is-invalid" : "" }} " value="{{old('email')}}" required><input type="submit" value="Subscribe">
+              <input type="email" name="email" class="form-control {{$errors->first('email') ? "is-invalid" : "" }} " value="{{old('email')}}" required><input type="submit" value="{{ __('home.subscribe') }}">
               <div class="invalid-feedback">
                 {{ $errors->first('email') }}    
             </div>
@@ -150,7 +185,7 @@
 
     <div class="container d-md-flex py-4">
 
-      <div class="mr-md-auto text-center text-md-left">
+      <div class="content-copy  text-center text-md-left">
         <div class="copyright">
           &copy; Copyright <strong><span>{{ $general->footer }}</span></strong>. All Rights Reserved
         </div>

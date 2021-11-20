@@ -89,7 +89,19 @@
           </div>
         </div>
       </li>
-      
+
+      <li class="nav-item">
+        <a class="nav-link" href="{{ route('admin.inverstment') }}">
+          <i class="fas fa-fw fa-table"></i>
+          <span>Investment</span></a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="{{ route('admin.comingsoon') }}">
+          <i class="fas fa-fw fa-table"></i>
+          <span>Coming Soon</span></a>
+      </li>
+
       <li class="nav-item">
         <a class="nav-link" href="{{ route('admin.faq') }}">
           <i class="fas fa-fw fa-table"></i>

@@ -36,7 +36,7 @@
               <p>{{ $banner->desc }}</p>
               @isset($banner->link)
               <div class="text-center">
-                <a href="{{ $banner->link }}" class="btn-get-started">Read More</a>
+                <a href="{{ $banner->link }}" class="btn-get-started">{{ __('home.readmore') }}</a>
               </div>
               @endisset
             </div>
@@ -50,12 +50,12 @@
 
       <a class="carousel-control-prev" href="#heroCarousel" role="button" data-slide="prev">
         <span class="carousel-control-prev-icon icofont-simple-left" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
+        <span class="sr-only">{{ __('home.previous') }}</span>
       </a>
 
       <a class="carousel-control-next" href="#heroCarousel" role="button" data-slide="next">
         <span class="carousel-control-next-icon icofont-simple-right" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
+        <span class="sr-only">{{ __('home.next') }}</span>
       </a>
 
       <ol class="carousel-indicators" id="hero-carousel-indicators"></ol>
@@ -70,7 +70,7 @@
       <div class="container" data-aos="fade-up">
 
         <div class="section-title">
-          <h2>About Us</strong></h2>
+          <h2><strong>{{ __('home.aboutus') }}</strong></h2>
         </div>
 
         <div class="row content">
@@ -93,7 +93,7 @@
       <div class="container" data-aos="fade-up">
 
         <div class="section-title">
-          <h2>Services</strong></h2>
+          <h2><strong>{{ __('home.services') }}</strong></h2>
           <p>Laborum repudiandae omnis voluptatum consequatur mollitia ea est voluptas ut</p>
         </div>
 
@@ -119,42 +119,99 @@
       </div>
     </section><!-- End Services Section -->
 
-    <!-- ======= Portfolio Section ======= -->
-    <section id="portfolio" class="portfolio">
+  <!-- ======= Portfolio Section ======= -->
+  <section id="portfolio" class="portfolio">
       <div class="container">
 
         <div class="section-title" data-aos="fade-up">
-          <h2>Portfolio</h2>
+          <h2>{{ __('home.portfolio') }}</h2>
         </div>
 
         <div class="row" data-aos="fade-up">
           <div class="col-lg-12 d-flex justify-content-center">
             <ul id="portfolio-flters">
-              {{--<li data-filter="*" class="filter-active">All</li>--}}
+              <!-- {{--<li data-filter="*" class="filter-active">All</li>--}} -->
               @foreach ($pcategories as $category)
                 <li data-filter=".{{ $category->id }}">{{ $category->name }}</li>
-        {{--<div class="row portfolio-container" data-aos="fade-up">--}}
+                {{--<div class="row portfolio-container" data-aos="fade-up">--}}
           @foreach ($portfolio as $portfoli)
             @if($category->id ==$portfoli->pcategory_id)
-          <div class="col-lg-4 col-md-6 portfolio-item {{ $portfoli->pcategory_id }}">
+          <div class="col-lg-3 col-md-3 portfolio-item {{ $portfoli->pcategory_id }}">
             <img src="{{ asset('storage/'.$portfoli->cover) }}" class="img-fluid" alt="">
             <div class="portfolio-info">
-              <h4>{{ $portfoli->name }}</h4>
-              <p>{{ $portfoli->pcategory->name }}</p>
               <a href="{{ asset('storage/'.$portfoli->cover) }}" data-gall="portfolioGallery" class="venobox preview-link" title="{{ $portfoli->name }}"><i class="bx bx-plus"></i></a>
               <a href="{{ route('portfolioshow',$portfoli->slug) }}" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
             </div>
+            <h5 class="portfolio-name">{{ $portfoli->name }}</h5>
+            {!!$portfoli->desc!!}
           </div>
+
               @endif
           @endforeach
-        </div>
-              @endforeach
+          @endforeach
             </ul>
+        </div>           
+
           </div>
         {{--</div>--}}
       </div>
     </section><!-- End Portfolio Section -->
+      <!-- ======= Investment ideas ======= -->
+  
+    <section id="Investment" class="Investment" style="padding:0">
+      <div class="container">
 
+        <div class="section-title" data-aos="fade-up">
+          <h2>{{ __('home.investmentideas') }}</h2>
+        </div>
+
+        <div class="row" data-aos="fade-up">
+          <div class="col-lg-12 d-flex justify-content-center">
+            <ul id="Investment-flters">
+
+              @foreach ($investment as $investment)
+       
+          <div class="col-lg-3 col-md-3 Investment-item {{ $investment->pcategory_id }}">
+            <img src="{{ asset('storage/'.$investment->cover) }}" class="img-fluid" alt="">
+            <div class="Investment-info">
+              <a href="{{ asset('storage/'.$investment->cover) }}" data-gall="portfolioGallery" class="venobox preview-link" title="{{ $investment->name }}"><i class="bx bx-plus"></i></a>
+              <a href="{{ route('portfolioshow',$investment->slug) }}" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+            </div>
+            <h4>{{ $investment->name }}</h4>
+              <p>{{ $investment->desc }}</p>
+          </div>
+            @endforeach
+          <hr>
+            </ul>
+          </div>
+          </div>
+        {{--</div>--}}
+      </div>
+    </section>
+    <!-- Investment ideas -->
+    <!-- Project for Sale -->
+    <div class="project" >
+    <div class="section-title" data-aos="fade-up">
+          <h2>{{ __('home.projectforsale') }} </h2>
+        </div>
+      <div class="imgs-container">
+        @foreach ($comingSoon as $comingSoon)
+        <div class="box" >
+          <img src="{{ asset('storage/'.$comingSoon->cover) }}" alt="" />
+          <!-- <img v-lazy="'img/shuffle-01.jpg'" alt="" /> -->
+          <div class="caption1">
+          <a href="{{ asset('storage/'.$comingSoon->cover) }}" data-gall="portfolioGallery" class="venobox preview-link" title="{{ $comingSoon->name }}"><i class="bx bx-plus"></i></a>
+          </div>
+          <div class="caption2">
+          <a href="{{ route('portfolioshow',$comingSoon->slug) }}" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+          </div>
+          <h4>{{$comingSoon->name}}</h4>
+            <p >{{ $comingSoon->desc }}</p>
+        </div>
+        @endforeach
+      </div>
+    </div>
+    <!-- End Project Sale -->
     <!-- ======= Our Clients Section ======= -->
     {{--<section id="clients" class="clients">--}}
       {{--<div class="container" data-aos="fade-up">--}}

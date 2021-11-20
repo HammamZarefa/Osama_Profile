@@ -89,6 +89,7 @@ h6 {
     font-weight: 700;
     letter-spacing: 0.5px;
     text-transform: uppercase;
+    margin-left: auto;
 }
 
 #header .logo a {
@@ -367,6 +368,7 @@ h6 {
     background-color: rgba(0, 0, 0, 0.8);
     overflow: hidden;
     position: relative;
+    direction: ltr;
 }
 
 #hero .carousel,
@@ -401,6 +403,9 @@ h6 {
     -webkit-animation-duration: 0.5s;
     animation-duration: 0.5s;
     border-top: 5px solid #1bbd36;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 #hero .carousel-content h2 {
@@ -1123,7 +1128,11 @@ section {
     margin-bottom: 20px;
     text-transform: uppercase;
 }
-
+.about-us .content div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 .about-us .content h3 {
     font-weight: 500;
     line-height: 32px;
@@ -2302,7 +2311,9 @@ section {
     font-size: 14px;
     background: #111;
 }
-
+#footer .container .row div{
+    text-align: right;
+}
 #footer .footer-top {
     padding: 60px 0 30px 0;
     background: #1e1e1e;
@@ -2398,6 +2409,8 @@ section {
     position: relative;
     border-radius: 4px 0 0 4px;
     text-align: left;
+    display: flex;
+    justify-content: flex-end;
 }
 
 #footer .footer-newsletter form input[type="email"] {
@@ -2425,7 +2438,9 @@ section {
 #footer .footer-newsletter form input[type="submit"]:hover {
     background: #2ae149;
 }
-
+#footer .content-copy{
+    margin-left: auto;
+}
 #footer .credits {
     padding-top: 5px;
     font-size: 13px;

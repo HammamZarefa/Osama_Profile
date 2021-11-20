@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Investment;
 use App\Models\Portfolio;
 use Illuminate\Http\Request;
-use App\Models\{About, General, Page, Post, User};
+use App\Models\{About, General, Page, Post, User,ComingSoon};
 
 class GeneralController extends Controller
 {
@@ -13,7 +14,9 @@ class GeneralController extends Controller
         $portfolio = Portfolio::count();
         $blog = Post::count();
         $page = Page::count();
-        return view ('admin.dashboard', compact('admin','blog','page','portfolio'));
+        $inverstment=Investment::count();
+        $comingSoon=ComingSoon::count();
+        return view ('admin.dashboard', compact('admin','blog','page','portfolio','inverstment','comingSoon'));
     }
 
     public function general(){
