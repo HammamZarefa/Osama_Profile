@@ -4,7 +4,7 @@
 {{ $post->title }} - 
 @endsection
 @section('meta')
-
+  {{ $local=session()->get('locale')}}
 <!-- Primary Meta Tags -->
 <meta name="title" content="{{ $post->title }}">
 <meta name="description" content="{{ $post->meta_desc }}">
@@ -58,7 +58,7 @@
               </div>
 
               <h2 class="entry-title">
-                <a href="{{route('blogshow',$post->slug)}}">{{ $post->title }}</a>
+                <a href="{{route('blogshow',$post->slug)}}">{{  $local=='en'?$post->title:$post->title_ar }}</a>
               </h2>
 
               <div class="entry-meta">
@@ -71,7 +71,7 @@
 
               <div class="entry-content">
                 <p>
-                  {!! $post->body !!}
+                  {!!  $local=='en'?$post->body:$post->body_ar!!}
                 </p>
               </div>
 
@@ -79,13 +79,13 @@
                 <div class="float-left">
                   <i class="icofont-folder"></i>
                   <ul class="cats">
-                    <li><a href="{{ route('category',$post->category->slug) }}">{{ $post->category->name }}</a></li>
+                    <li><a href="{{ route('category',$post->category->slug) }}">{{  $local=='en'?$post->category->name:$post->category->name_ar }}</a></li>
                   </ul>
 
                   <i class="icofont-tags"></i>
                   <ul class="tags">
                     @foreach ($tags as $tag)
-                   <li><a href="{{ route('tag',$tag->slug) }}">{{ $tag->name }}</a></li>
+                   <li><a href="{{ route('tag',$tag->slug) }}">{{  $local=='en'?$tag->name:$tag->name_ar }}</a></li>
                     @endforeach 
                   </ul>
                 </div>
@@ -119,7 +119,7 @@
               <div class="sidebar-item categories">
                 <ul>
                   @foreach ($categories as $category)
-                  <li><a href="{{ route('category',$category->slug) }}">{{ $category->name }} <span>({{ $category->count() }})</span></a></li>
+                  <li><a href="{{ route('category',$category->slug) }}">{{  $local=='en'?$category->name:$category->name_ar }} <span>({{ $category->count() }})</span></a></li>
                   @endforeach
                 </ul>
 
@@ -131,7 +131,7 @@
                 @foreach ($recent as $recent)
                 <div class="post-item clearfix">
                   <img src="{{ asset('storage/'.$recent->cover) }}" alt="">
-                  <h4><a href="{{route('blogshow',$post->slug)}}">{{ $recent->title }}</a></h4>
+                  <h4><a href="{{route('blogshow',$post->slug)}}">{{  $local=='en'?$recent->title:$recent->title_ar }}</a></h4>
                   <time datetime="2020-01-01">{{ Carbon\Carbon::parse($post->created_at)->format("d F, Y") }}</time>
                 </div>
                 @endforeach
@@ -142,7 +142,7 @@
               <div class="sidebar-item tags">
                 <ul>
                   @foreach ($tags as $tag)
-                   <li><a href="{{ route('tag',$tag->slug) }}">{{ $tag->name }}</a></li>
+                   <li><a href="{{ route('tag',$tag->slug) }}">{{ $local=='en'? $tag->name:$tag->name_ar }}</a></li>
                   @endforeach 
                 </ul>
 

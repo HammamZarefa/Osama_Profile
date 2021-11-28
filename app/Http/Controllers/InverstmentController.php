@@ -52,6 +52,10 @@ class InverstmentController extends Controller
         $inverstment->client = $request->client;
         $inverstment->desc = $request->desc;
         $inverstment->date = $request->date;
+        $inverstment->desc_ar = $request->desc_ar;
+        $inverstment->short_desc_ar = $request->short_desc_ar;
+        $inverstment->short_desc = $request->short_desc;
+        $inverstment->name_ar = $request->name_ar;
 
         $cover = $request->file('cover');
 
@@ -117,6 +121,10 @@ class InverstmentController extends Controller
         $inverstment->client = $request->client;
         $inverstment->desc = $request->desc;
         $inverstment->date = $request->date;
+        $inverstment->desc_ar = $request->desc_ar;
+        $inverstment->short_desc_ar = $request->short_desc_ar;
+        $inverstment->short_desc = $request->short_desc;
+        $inverstment->name_ar = $request->name_ar;
 
 
         $new_cover = $request->file('cover');

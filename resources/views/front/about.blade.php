@@ -1,5 +1,5 @@
 @extends('layouts.front')
-
+{{ $local=session()->get('locale')}}
 @section('content')
     <!-- ======= Breadcrumbs ======= -->
     <section id="breadcrumbs" class="breadcrumbs">
@@ -22,12 +22,12 @@
   
           <div class="row content">
             <div class="col-lg-6" data-aos="fade-right" style="display:flex;flex-direction: column;align-items: center;">
-              <h2>{{ $about->title }}</h2>
-              <h3>{{ $about->subject }}</h3>
+              <h2>{{ $local=='en'?$about->title:$about->title_ar }}</h2>
+              <h3>{{ $local=='en'?$about->subject:$about->subject }}</h3>
             </div>
             <div class="col-lg-6 pt-4 pt-lg-0" data-aos="fade-left" style="display:flex;flex-direction: column;align-items: center;">
               <p>
-                {!! $about->desc !!}
+                {!! $local=='en'?$about->desc:$about->desc_ar !!}
               </p>
              
             </div>

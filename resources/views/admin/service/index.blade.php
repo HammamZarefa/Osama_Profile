@@ -48,6 +48,8 @@
 
                         <th>Title</th>
 
+                        <th>Title AR</th>
+
                         <th>Desc</th>
 
                         <th>Option</th>
@@ -72,8 +74,9 @@
              
                         <td> {{ $service->icon }} </td>    
                 
-                        <td>{{ $service->title }}</td>    
-                
+                        <td>{{ $service->title }}</td>
+                        <td>{{ $service->title_ar }}</td>
+
                         <td>{{ $service->quote }}</td>     
                 
                         <td>    

@@ -76,19 +76,22 @@
 
 
         <div class="form-group ml-5">
-
             <label for="title" class="col-sm-2 col-form-label">Title</label>
-
             <div class="col-sm-7">
-
                 <input type="text" name='title' class="form-control {{$errors->first('title') ? "is-invalid" : "" }} " value="{{old('title') ? old('title') : $post->title}}" id="title" placeholder="Title">
-
                 <div class="invalid-feedback">
                     {{ $errors->first('title') }}    
-                </div>   
-
+                </div>
             </div>
-
+        </div>
+        <div class="form-group ml-5">
+            <label for="title" class="col-sm-2 col-form-label">Title AR</label>
+            <div class="col-sm-7">
+                <input type="text" name='title_ar' class="form-control {{$errors->first('title_ar') ? "is-invalid" : "" }} " value="{{old('title_ar') ? old('title_ar') : $post->title_ar}}" id="title_ar" placeholder="Title AR">
+                <div class="invalid-feedback">
+                    {{ $errors->first('title_ar') }}
+                </div>
+            </div>
         </div>
 
         <div class="form-group ml-5">
@@ -135,18 +138,23 @@
         </div>
 
         <div class="form-group ml-5">
-
             <label for="body" class="col-sm-2 col-form-label">Desc</label>
-
             <div class="col-sm-8">
-
                 <textarea name="body" class="form-control {{$errors->first('body') ? "is-invalid" : "" }} "  id="summernote" cols="30" rows="10">{{old('body') ? old('body') : $post->body}}</textarea>
                 <div class="invalid-feedback">
-                    {{ $errors->first('body') }}    
-                </div>   
-
+                    {{ $errors->first('body') }}
+                </div>
             </div>
+        </div>
 
+        <div class="form-group ml-5">
+            <label for="body" class="col-sm-2 col-form-label">Desc AR</label>
+            <div class="col-sm-8">
+                <textarea name="body_ar" class="form-control {{$errors->first('body_ar') ? "is-invalid" : "" }} "  id="summernote" cols="30" rows="10">{{old('body_ar') ? old('body_ar') : $post->body_ar}}</textarea>
+                <div class="invalid-feedback">
+                    {{ $errors->first('body_ar') }}
+                </div>
+            </div>
         </div>
 
         <div class="form-group ml-5">

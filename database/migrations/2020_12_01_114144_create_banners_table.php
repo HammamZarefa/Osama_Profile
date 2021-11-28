@@ -18,6 +18,8 @@ class CreateBannersTable extends Migration
             $table->string('cover');
             $table->string('title')->nullable();
             $table->longText('desc')->nullable();
+            $table->string('title-ar')->nullable();
+            $table->longText('desc-ar')->nullable();
             $table->text('link')->nullable();
             $table->timestamps();
         });

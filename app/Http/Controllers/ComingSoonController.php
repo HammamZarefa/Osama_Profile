@@ -53,6 +53,10 @@ class ComingSoonController extends Controller
 //        $comingSoon->client = $request->client;
         $comingSoon->desc = $request->desc;
         $comingSoon->date = $request->date;
+        $comingSoon->desc_ar = $request->desc_ar;
+        $comingSoon->short_desc_ar = $request->short_desc_ar;
+        $comingSoon->short_desc = $request->short_desc;
+        $comingSoon->name_ar = $request->name_ar;
 
         $cover = $request->file('cover');
 
@@ -118,6 +122,10 @@ class ComingSoonController extends Controller
 //        $comingSoon->client = $request->client;
         $comingSoon->desc = $request->desc;
         $comingSoon->date = $request->date;
+        $comingSoon->desc_ar = $request->desc_ar;
+        $comingSoon->short_desc_ar = $request->short_desc_ar;
+        $comingSoon->short_desc = $request->short_desc;
+        $comingSoon->name_ar = $request->name_ar;
 
 
         $new_cover = $request->file('cover');

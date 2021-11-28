@@ -138,11 +138,11 @@
           {{--<span>Team</span></a>--}}
       {{--</li>--}}
 
-      <li class="nav-item">
-        <a class="nav-link" href="{{ route('admin.testi') }}">
-          <i class="fas fa-fw fa-table"></i>
-          <span>Testimonials</span></a>
-      </li>
+      {{--<li class="nav-item">--}}
+        {{--<a class="nav-link" href="{{ route('admin.testi') }}">--}}
+          {{--<i class="fas fa-fw fa-table"></i>--}}
+          {{--<span>Testimonials</span></a>--}}
+      {{--</li>--}}
 
       <!-- Nav Item - Utilities Collapse Menu -->
       <li class="nav-item">

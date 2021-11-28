@@ -45,6 +45,7 @@
                         <th>No.</th>
 
                         <th>Name</th>
+                        <th>Name AR</th>
 
                         <th>Slug</th>
 
@@ -72,8 +73,8 @@
              
                         <td>{{ ++$no }}</td>  
                 
-                        <td>{{ $tag->name }}</td> 
-                        
+                        <td>{{ $tag->name }}</td>
+                        <td>{{ $tag->name_ar }}</td>
                         <td>{{ $tag->slug }}</td> 
                         
                         <td>{{ $tag->keyword }}</td> 

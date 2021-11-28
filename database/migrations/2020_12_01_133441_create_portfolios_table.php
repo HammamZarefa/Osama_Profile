@@ -20,6 +20,10 @@ class CreatePortfoliosTable extends Migration
             $table->string('slug');
             $table->string('cover');
             $table->string('client');
+            $table->string('name_ar');
+            $table->string('short_desc');
+            $table->string('short_desc_ar');
+            $table->string('desc_ar');
             $table->date('date')->nullable();
             $table->longText('desc');
             $table->timestamps();

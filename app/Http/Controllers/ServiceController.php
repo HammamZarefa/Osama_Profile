@@ -50,6 +50,9 @@ class ServiceController extends Controller
         $service->slug = \Str::slug(request('title'));
         $service->quote = $request->quote;
         $service->desc = $request->desc;
+        $service->title_ar = $request->title_ar;
+        $service->quote_ar = $request->quote_ar;
+        $service->desc_ar = $request->desc_ar;
 
        if ( $service->save()) {
 
@@ -108,6 +111,9 @@ class ServiceController extends Controller
         $service->slug = \Str::slug(request('title'));
         $service->quote = $request->quote;
         $service->desc = $request->desc;
+        $service->title_ar = $request->title_ar;
+        $service->quote_ar = $request->quote_ar;
+        $service->desc_ar = $request->desc_ar;
 
        if ( $service->save()) {
 

@@ -60,91 +60,89 @@
     <div class="container">
 
         <div class="form-group">
-
             <div class="picture-container">
-    
                 <div class="picture">
-    
                     <img src="{{asset('storage/' . $general->logo)}}" class="picture-src" id="wizardPicturePreview" height="200px" width="400px" title=""/>
-    
                     <input type="file" id="wizard-picture" name="logo" class="form-control {{$errors->first('logo') ? "is-invalid" : "" }} ">
-    
                     <div class="invalid-feedback">
                         {{ $errors->first('logo') }}    
-                    </div>  
-    
+                    </div>
                 </div>
-    
                 <h6>Upload Logo</h6>
-    
             </div>
-    
         </div>
 
         <div class="form-group ml-5">
-
             <label for="favicon" class="col-sm-2 col-form-label">Favicon</label>
-
             <div class="col-sm-7">
-
                 <img src="{{asset('storage/' . $general->favicon)}}" alt="">
                 <input type="file" name='favicon' class="form-control {{$errors->first('favicon') ? "is-invalid" : "" }} " value="{{old('favicon') ? old('favicon') : $general->favicon}}" id="favicon" placeholder="Title">
-
                 <div class="invalid-feedback">
                     {{ $errors->first('favicon') }}    
-                </div>   
-
+                </div>
             </div>
-
         </div>
 
         <div class="form-group ml-5">
-
             <label for="title" class="col-sm-2 col-form-label">Title</label>
-
             <div class="col-sm-7">
-
                 <input type="text" name='title' class="form-control {{$errors->first('title') ? "is-invalid" : "" }} " value="{{old('title') ? old('title') : $general->title}}" id="title" placeholder="Title">
-
                 <div class="invalid-feedback">
                     {{ $errors->first('title') }}    
-                </div>   
-
+                </div>
             </div>
-
         </div>
 
         <div class="form-group ml-5">
-
-            <label for="address1" class="col-sm-2 col-form-label">Address 1</label>
-
+            <label for="title_ar" class="col-sm-2 col-form-label">Title AR</label>
             <div class="col-sm-7">
+                <input type="text" name='title_ar' class="form-control {{$errors->first('title_ar') ? "is-invalid" : "" }} " value="{{old('title_ar') ? old('title_ar') : $general->title_ar}}" id="title_ar" placeholder="title_ar">
+                <div class="invalid-feedback">
+                    {{ $errors->first('title_ar') }}
+                </div>
+            </div>
+        </div>
 
+        <div class="form-group ml-5">
+            <label for="address1" class="col-sm-2 col-form-label">Address 1</label>
+            <div class="col-sm-7">
                 <input type="text" name='address1' class="form-control {{$errors->first('address1') ? "is-invalid" : "" }} " value="{{old('address1') ? old('address1') : $general->address1}}" id="address1" placeholder="Address 1">
-
                 <div class="invalid-feedback">
                     {{ $errors->first('address1') }}    
-                </div>   
-
+                </div>
             </div>
-
         </div>
 
         <div class="form-group ml-5">
-
-            <label for="address2" class="col-sm-2 col-form-label">Address 2</label>
-
+            <label for="address1" class="col-sm-2 col-form-label">Address 1 AR</label>
             <div class="col-sm-7">
+                <input type="text" name='address1_ar' class="form-control {{$errors->first('address1_ar') ? "is-invalid" : "" }} " value="{{old('address1_ar') ? old('address1_ar') : $general->address1_ar}}" id="address1_ar" placeholder="address1_ar 1">
+                <div class="invalid-feedback">
+                    {{ $errors->first('address1_ar') }}
+                </div>
+            </div>
+        </div>
 
+        <div class="form-group ml-5">
+            <label for="address2" class="col-sm-2 col-form-label">Address 2</label>
+            <div class="col-sm-7">
                 <input type="text" name='address2' class="form-control {{$errors->first('address2') ? "is-invalid" : "" }} " value="{{old('address2') ? old('address2') : $general->address2}}" id="address2" placeholder="Address 2">
-
                 <div class="invalid-feedback">
                     {{ $errors->first('address2') }}    
-                </div>   
-
+                </div>
             </div>
-
         </div>
+
+        <div class="form-group ml-5">
+            <label for="address2" class="col-sm-2 col-form-label">Address 2 AR</label>
+            <div class="col-sm-7">
+                <input type="text" name='address2_ar' class="form-control {{$errors->first('address2_ar') ? "is-invalid" : "" }} " value="{{old('address2_ar') ? old('address2_ar') : $general->address2_ar}}" id="address2_ar" placeholder="address2_ar 2">
+                <div class="invalid-feedback">
+                    {{ $errors->first('address2_ar') }}
+                </div>
+            </div>
+        </div>
+
 
         <div class="form-group ml-5">
 

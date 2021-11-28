@@ -38,10 +38,14 @@ class BannerController extends Controller
      */
     public function store(Request $request)
     {
+//        dd($request);
         $banner = new Banner();
         $banner->title  = $request->title;
         $banner->link  = $request->link;
+        $banner->title_ar  = $request->title_ar;
         $banner->desc   = $request->desc;
+        $banner->link  = $request->link;
+        $banner->desc_ar   = $request->desc_ar;
 
         $cover = $request->file('cover');
         if($cover){
@@ -93,8 +97,10 @@ class BannerController extends Controller
     {
         $banner = Banner::findOrFail($id);
         $banner->title  = $request->title;
+        $banner->title_ar  = $request->title_ar;
         $banner->link  = $request->link;
         $banner->desc   = $request->desc;
+        $banner->desc_ar   = $request->desc_ar;
 
         $new_cover = $request->file('cover');
         if($new_cover){

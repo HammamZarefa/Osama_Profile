@@ -110,18 +110,45 @@
 
         </div>
 
+        <div class="form-group ml-5">
+            <label for="name" class="col-sm-2 col-form-label">Name AR</label>
+            <div class="col-sm-9">
+                <input type="text" name='name_ar' class="form-control {{$errors->first('name_ar') ? "is-invalid" : "" }} " value="{{old('name_ar') ? old('name_ar') : $inverstment->name}}" id="name_ar" placeholder="Project Name AR">
+                <div class="invalid-feedback">
+                    {{ $errors->first('name_ar') }}
+                </div>
+            </div>
+        </div>
+        <div class="form-group ml-5">
+            <label for="short_desc" class="col-sm-2 col-form-label">Short Desc</label>
+            <div class="col-sm-9">
+                <input type="text" name='short_desc' class="form-control {{$errors->first('short_desc') ? "is-invalid" : "" }} " value="{{old('short_desc') ? old('short_desc') : $inverstment->short_desc}}" id="short_desc" placeholder="Short Description">
+                <div class="invalid-feedback">
+                    {{ $errors->first('short_desc') }}
+                </div>
+            </div>
+        </div>
+        <div class="form-group ml-5">
+            <label for="short_desc" class="col-sm-2 col-form-label">Short Desc AR</label>
+            <div class="col-sm-9">
+                <input type="text" name='short_desc_ar' class="form-control {{$errors->first('short_desc_ar') ? "is-invalid" : "" }} " value="{{old('short_desc_ar') ? old('short_desc') : $inverstment->short_desc_ar}}" id="short_desc_ar" placeholder="Short Description AR">
+                <div class="invalid-feedback">
+                    {{ $errors->first('short_desc_ar') }}
+                </div>
+            </div>
+        </div>
 
         <div class="form-group ml-5">
 
-            <label for="client" class="col-sm-2 col-form-label">Client</label>
+            <label for="client" class="col-sm-2 col-form-label">Link</label>
 
             <div class="col-sm-9">
 
                 <input type="text" name='client' class="form-control {{$errors->first('client') ? "is-invalid" : "" }} " value="{{old('client') ? old('client') : $inverstment->client}}" id="client" placeholder="client">
 
                 <div class="invalid-feedback">
-                    {{ $errors->first('client') }}    
-                </div>   
+                    {{ $errors->first('client') }}
+                </div>
 
             </div>
 
@@ -136,30 +163,35 @@
                 <input type="date" name='date' class="form-control {{$errors->first('date') ? "is-invalid" : "" }} " value="{{old('date') ? old('date') : $inverstment->date}}" id="date" >
 
                 <div class="invalid-feedback">
-                    {{ $errors->first('date') }}    
-                </div>   
+                    {{ $errors->first('date') }}
+                </div>
 
             </div>
 
         </div>
 
         <div class="form-group ml-5">
-
             <label for="desc" class="col-sm-2 col-form-label">Desc</label>
-
             <div class="col-sm-9">
-
                 <textarea name="desc" class="form-control {{$errors->first('desc') ? "is-invalid" : "" }} "  id="summernote" cols="30" rows="10">{{old('desc') ? old('desc') : $inverstment->desc}}</textarea>
                 <div class="invalid-feedback">
-                    {{ $errors->first('desc') }}    
-                </div>   
-
+                    {{ $errors->first('desc') }}
+                </div>
             </div>
-
         </div>
 
-        
-   
+        <div class="form-group ml-5">
+            <label for="desc" class="col-sm-2 col-form-label">Desc AR</label>
+            <div class="col-sm-9">
+                <textarea name="desc_ar" class="form-control {{$errors->first('desc_ar') ? "is-invalid" : "" }} "  id="summernote" cols="30" rows="10">{{old('desc_ar') ? old('desc_ar') : $inverstment->desc_ar}}</textarea>
+                <div class="invalid-feedback">
+                    {{ $errors->first('desc_ar') }}
+                </div>
+            </div>
+        </div>
+
+
+
         <div class="form-group ml-5">
    
             <div class="col-sm-3">

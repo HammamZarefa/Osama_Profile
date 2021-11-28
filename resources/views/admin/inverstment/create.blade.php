@@ -95,19 +95,23 @@
         </div>
 
         <div class="form-group ml-5">
-
             <label for="name" class="col-sm-2 col-form-label">Name</label>
-
             <div class="col-sm-9">
-
                 <input type="text" name='name' class="form-control {{$errors->first('name') ? "is-invalid" : "" }} " value="{{old('name')}}" id="name" placeholder="Project Name">
-
                 <div class="invalid-feedback">
                     {{ $errors->first('name') }}    
-                </div>   
-
+                </div>
             </div>
+        </div>
 
+        <div class="form-group ml-5">
+            <label for="name" class="col-sm-2 col-form-label">Name AR</label>
+            <div class="col-sm-9">
+                <input type="text" name='name_ar' class="form-control {{$errors->first('name_ar') ? "is-invalid" : "" }} " value="{{old('name_ar')}}" id="name_ar" placeholder="Project Name AR">
+                <div class="invalid-feedback">
+                    {{ $errors->first('name_ar') }}
+                </div>
+            </div>
         </div>
 
         <div class="form-group ml-5">
@@ -125,7 +129,25 @@
             </div>
 
         </div>
+        <div class="form-group ml-5">
+            <label for="short_desc" class="col-sm-2 col-form-label">Short Desc</label>
+            <div class="col-sm-9">
+                <input type="text" name='short_desc' class="form-control {{$errors->first('short_desc') ? "is-invalid" : "" }} " value="{{old('short_desc')}}" id="short_desc" placeholder="short desc">
+                <div class="invalid-feedback">
+                    {{ $errors->first('short_desc') }}
+                </div>
+            </div>
+        </div>
 
+        <div class="form-group ml-5">
+            <label for="short_desc" class="col-sm-2 col-form-label">Short Desc AR</label>
+            <div class="col-sm-9">
+                <input type="text" name='short_desc_ar' class="form-control {{$errors->first('short_desc_ar') ? "is-invalid" : "" }} " value="{{old('short_desc_ar')}}" id="short_desc_ar" placeholder="short desc ar">
+                <div class="invalid-feedback">
+                    {{ $errors->first('short_desc_ar') }}
+                </div>
+            </div>
+        </div>
         <div class="form-group ml-5">
 
             <label for="date" class="col-sm-2 col-form-label">Project Date</label>
@@ -156,7 +178,15 @@
             </div>
 
         </div>
-
+        <div class="form-group ml-5">
+            <label for="desc" class="col-sm-2 col-form-label">Desc AR</label>
+            <div class="col-sm-9">
+                <textarea name="desc_ar" class="form-control {{$errors->first('desc_ar') ? "is-invalid" : "" }} "  id="summernotear" cols="30" rows="10">{{old('desc_ar')}}</textarea>
+                <div class="invalid-feedback">
+                    {{ $errors->first('desc_ar') }}
+                </div>
+            </div>
+        </div>
         
    
         <div class="form-group ml-5">

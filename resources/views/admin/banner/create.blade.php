@@ -48,7 +48,7 @@
 </div>
 @endif
 
-<form action="{{ route('banner.store') }}" method="POST" enctype="multipart/form-data">
+<form action="{{ route('admin.banner.store') }}" method="POST" enctype="multipart/form-data">
     @csrf
 
     <div class="form-group">
@@ -67,25 +67,43 @@
 
         </div>
 
-      </div>   
+      </div>
 
       <div class="form-group ml-5">
         <label for="title" class="col-sm-2 col-form-label">Title</label>
         <div class="col-sm-7">
             <input type="text" name='title' class="form-control {{$errors->first('title') ? "is-invalid" : "" }} " value="{{old('title')}}" id="title" placeholder="Title">
             <div class="invalid-feedback">
-                {{ $errors->first('title') }}    
-            </div>   
+                {{ $errors->first('title') }}
+            </div>
+        </div>
+
+        <label for="title_ar" class="col-sm-2 col-form-label">Title AR</label>
+            <input type="text" name='title_ar' class="form-control {{$errors->first('title_ar') ? "is-invalid" : "" }} " value="{{old('title_ar')}}" id="title_ar" placeholder="Title AR">
+            <div class="invalid-feedback">
+                {{ $errors->first('title_ar') }}
+            </div>
         </div>
     </div>
+
 
     <div class="form-group ml-5">
         <label for="desc" class="col-sm-2 col-form-label">Desc</label>
         <div class="col-sm-7">
           <textarea name="desc" id="desc" cols="30" rows="10" class="form-control {{$errors->first('desc') ? "is-invalid" : "" }} " id="summernote">{{old('desc')}}</textarea>
           <div class="invalid-feedback">
-            {{ $errors->first('desc') }}    
-        </div> 
+            {{ $errors->first('desc') }}
+        </div>
+        </div>
+    </div>
+
+    <div class="form-group ml-5">
+        <label for="desc_ar" class="col-sm-2 col-form-label">Desc AR</label>
+        <div class="col-sm-7">
+            <textarea name="desc_ar" id="desc_ar" cols="30" rows="10" class="form-control {{$errors->first('desc_ar') ? "is-invalid" : "" }} " id="summernote">{{old('desc_ar')}}</textarea>
+            <div class="invalid-feedback">
+                {{ $errors->first('desc_ar') }}
+            </div>
         </div>
     </div>
 

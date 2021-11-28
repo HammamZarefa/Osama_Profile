@@ -40,7 +40,7 @@ h6 {
     width: 40px;
     height: 40px;
     border-radius: 3px;
-    right: 15px;
+    left: 15px;
     bottom: 15px;
     background: #1bbd36;
     color: #fff;
@@ -60,7 +60,81 @@ h6 {
     background: #2ae149;
     transition: 0.3s ease-in-out;
 }
+/* whatsapp button */
+.whatsapp {
+    position: fixed;
+    display: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 3px;
+    right: 15px;
+    bottom: 15px;
+    background: #1bbd36;
+    color: #fff;
+    transition: display 0.5s ease-in-out;
+    z-index: 99999;
+    animation: shake 1.5s cubic-bezier(.36,.07,.19,.97) both;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+  animation-iteration-count: infinite; 
 
+}
+
+.whatsapp i {
+    font-size: 24px;
+    position: absolute;
+    top: 8px;
+    left: 8px;
+}
+
+.whatsapp:hover {
+    color: #fff;
+    background: #2ae149;
+    transition: 0.3s ease-in-out;
+}
+.whatsapp::after {
+    content: "";
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    border: 6px solid #2ae149;
+    position: absolute;
+    z-index: 99;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: ring 1.5s infinite;
+  }
+  @keyframes shake {
+    10%, 90% {
+      transform: translate3d(-1px, 0, 0);
+    }
+    
+    20%, 80% {
+      transform: translate3d(2px, 0, 0);
+    }
+  
+    30%, 50%, 70% {
+      transform: translate3d(-4px, 0, 0);
+    }
+  
+    40%, 60% {
+      transform: translate3d(4px, 0, 0);
+    }
+  }
+  @keyframes ring {
+    0% {
+      width: 30px;
+      height: 30px;
+      opacity: 1;
+    }
+    100% {
+      width: 300px;
+      height: 300px;
+      opacity: 0;
+    }
+  }
 /*--------------------------------------------------------------
 # Disable AOS delay on mobile
 --------------------------------------------------------------*/
@@ -80,16 +154,21 @@ h6 {
     padding: 15px 0;
     box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
 }
-
+#header .container{
+    display: flex;
+    justify-content: space-between;
+}
 #header .logo {
     font-size: 28px;
-    margin: 0;
     padding: 0;
     line-height: 1;
     font-weight: 700;
     letter-spacing: 0.5px;
     text-transform: uppercase;
-    margin-left: auto;
+    width: 150px;
+    display: flex;
+    height: 50px;
+    justify-content: start;
 }
 
 #header .logo a {
@@ -101,8 +180,32 @@ h6 {
 }
 
 #header .logo img {
-    max-height: 40px;
-    width: 150px;
+    height: 100%;
+}
+#header .lang{
+    display: flex;
+align-items: center;
+} 
+#header .lang img{
+    border-inline-start: 1px solid #aaa;
+} 
+@media (max-width:568px) {
+#header .header-social-links{
+    padding: 0 15px 0 0;
+}
+#header .container{
+    flex-wrap: wrap;
+}
+#header .container div{
+    margin: 10px 0;
+}
+#header .container .header-social-links{
+    width: 85%;
+}
+#header .lang{
+    margin: auto;
+    width: 10%;
+}  
 }
 
 /*--------------------------------------------------------------
@@ -128,9 +231,9 @@ h6 {
 .nav-menu a {
     display: block;
     position: relative;
-    color: #111;
+    color: #000;
     transition: 0.3s;
-    font-size: 13px;
+    font-size: 16px;
     text-transform: uppercase;
     font-weight: 600;
     font-family: "Roboto", sans-serif;
@@ -225,7 +328,7 @@ h6 {
 /* Mobile Navigation */
 .mobile-nav-toggle {
     position: fixed;
-    right: 15px;
+    left: 15px;
     top: 15px;
     z-index: 9998;
     border: 0;
@@ -237,7 +340,11 @@ h6 {
     cursor: pointer;
     text-align: right;
 }
-
+@media (max-width:568px) {
+.mobile-nav-toggle {
+    top: 10px;
+}  
+}
 .mobile-nav-toggle i {
     color: #1bbd36;
 }
@@ -257,7 +364,10 @@ h6 {
     border-radius: 10px;
     padding: 10px 0;
 }
+.mobile-nav ul{
+    text-align: right;
 
+}
 .mobile-nav * {
     margin: 0;
     padding: 0;
@@ -335,11 +445,12 @@ h6 {
 # Header Social Links
 --------------------------------------------------------------*/
 .header-social-links {
-    padding-left: 14px;
-    margin-left: 20px;
-    border-left: 1px solid #c4c4c4;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-inline-end: 15px;
 }
-
 .header-social-links a {
     color: #a0a0a0;
     padding-left: 6px;
@@ -351,13 +462,24 @@ h6 {
 .header-social-links a:hover {
     color: #1bbd36;
 }
-
+@media (max-width: 568px) {
+    .xs-social {
+        display: flex;
+        justify-content: center;
+        padding: 0 !important;
+        padding-top: 25px;
+    }
+    .lg-social {
+        display: none;
+    }
+}
 @media (max-width: 768px) {
     .header-social-links {
         padding: 0 48px 0 0;
         border-left: 0;
     }
 }
+
 
 /*--------------------------------------------------------------
 # Hero Section
@@ -368,7 +490,6 @@ h6 {
     background-color: rgba(0, 0, 0, 0.8);
     overflow: hidden;
     position: relative;
-    direction: ltr;
 }
 
 #hero .carousel,
@@ -768,322 +889,83 @@ section {
 /*--------------------------------------------------------------
 # Portfolio
 --------------------------------------------------------------*/
-.portfolio #portfolio-flters {
+.portfolio {
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+.portfolio .container {
     padding: 0;
-    margin: 0 auto 50px auto;
-    list-style: none;
-    text-align: center;
 }
-
-.portfolio #portfolio-flters li {
-    display: block;
-    padding: 0 20px 0 20px;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 1;
-    text-transform: uppercase;
-    color: #4d4643;
-    transition: all 0.3s;
-    position: relative;
-    opacity: 0.6;
-    scale: 2.1;
+.portfolio .shuffle {
+    
+    padding: 0;
 }
-.portfolio #portfolio-flters li::after {
-    content: "";
-    position: absolute;
-    bottom: -10px;
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
+.portfolio .shuffle li {
+    width: 125px;
+    height: 65px;
+    margin: 0 auto;
     background-color: #1bbd36;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-
-.portfolio .portfolio-item {
-    position: relative;
-    margin: 50px auto 25px;
     display: flex;
     justify-content: center;
-    display: inline-block;
-}
-@media (max-width: 767px) {
-    .portfolio .portfolio-item img{
-        height: 150px;
-    }
-  }
-.portfolio .portfolio-item .portfolio-info {
-    opacity: 0;
-    position: absolute;
-    left: 30px;
-    right: 30px;
-    bottom: 0;
-    z-index: 3;
-    transition: all ease-in-out 0.3s;
-    background: rgba(255, 255, 255, 0.9);
-    padding: 15px;
-}
-
-.portfolio .portfolio-item .portfolio-info h4 {
-    font-size: 18px;
+    align-items: center;
+    border-radius: 3px;
     color: #fff;
-    font-weight: 600;
-    color: #111;
-}
-
-.portfolio .portfolio-item .portfolio-info p {
-    color: #444444;
-    font-size: 14px;
-    margin-bottom: 0;
-}
-
-.portfolio .portfolio-item .portfolio-info .preview-link,
-.portfolio .portfolio-item .portfolio-info .details-link {
-    font-size: 24px;
-    color: #2b2b2b;
-}
-
-.portfolio .portfolio-item .portfolio-info .preview-link:hover,
-.portfolio .portfolio-item .portfolio-info .details-link:hover {
-    color: #1bbd36;
-}
-
-.portfolio .portfolio-item .portfolio-info .details-link {
-    right: 10px;
-}
-
-.portfolio .portfolio-item .portfolio-links {
-    opacity: 0;
-    left: 0;
-    right: 0;
-    text-align: center;
-    z-index: 3;
-    position: absolute;
-    transition: all ease-in-out 0.3s;
-}
-
-.portfolio .portfolio-item .portfolio-links a {
-    color: #fff;
-    margin: 0 2px;
-    font-size: 28px;
-    display: inline-block;
+    position: relative;
+    font-weight: bold;
     transition: 0.3s;
+    font-size: 14px;
+    box-shadow: 1px 3px 20px #1bbd36;
 }
-
-.portfolio .portfolio-item .portfolio-links a:hover {
-    color: #57e76f;
+.portfolio .shuffle li::after {
+    content: '';
+    position: absolute;
+    border-width: 62px;
+    border-color: #1bbd36 transparent transparent transparent;
+    border-style: solid;
+    top: 64px;
+    left: 0;
+    border-radius: 2px;
+    z-index: 2;
 }
-
-.portfolio .portfolio-item:hover .portfolio-info {
-    opacity: 1;
-    bottom: 20px;
+.portfolio .imgs-container {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 25px 0 60px;
+    justify-content: space-around;
 }
-.portfolio .portfolio-container .portfolio-name {
-    margin: 25px 0;
-    font-size: 30px;
+.portfolio .shuffle .box {
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    height: 185px;
+    margin: 50px 0;
 }
-.portfolio .portfolio-container .portfolio-name {
-    margin: 25px 0;
-    font-size: 30px;
+.portfolio .shuffle .box a{
+    height: 100%;
 }
-/*--------------------------------------------------------------
-# Investment
---------------------------------------------------------------*/
-.Investment #Investment-flters {
-  padding: 0;
-  margin: 0 auto 50px auto;
-  list-style: none;
-  text-align: center;
+.portfolio .shuffle .box img {
+    max-width: 100%;
+    transition: 0.3s;
+    height: 100%;
 }
-
-.Investment #Investment-flters li {
-  display: block;
-  margin-top: 40px;
-  padding: 15px 20px 10px 20px;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 1;
-  text-transform: uppercase;
-  color: #4d4643;
-  transition: all 0.3s;
-  position: relative;
-  opacity: 0.6;
-  scale: 2.1;
-}
-.Investment #Investment-flters li::after {
-  content: "";
-  position: absolute;
-  bottom: -3px;
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background-color: #1bbd36;
-  left: 50%;
-  transform: translateX(-50%);
-}
-.Investment #Investment-flters li:last-child {
-  margin-right: 0;
-}
-.Investment .Investment-item {
-  margin: 50px auto 25px;
-  display: flex;
-  justify-content: center;
-  display: inline-block;
-
-}
-@media (max-width: 767px) {
-    .Investment .Investment-item img{
-        height: 150px;
-    }
-  }
-.Investment .Investment-item .Investment-info {
-  left: 50%;
-  transform: translate(-50%,-50%);
-  opacity: 0;
-  position: absolute;
-  z-index: 3;
-  transition: all ease-in-out 0.3s;
-  background: #2ab040a6;
-  padding: 15px;
-  border-radius: 5px;
-  color: #fff;
-}
-
-.Investment .Investment-item .Investment-info h4 {
-  font-size: 18px;
-  font-weight: 600;
-}
-
-.Investment .Investment-item .Investment-info p {
-  font-size: 14px;
-  margin-bottom: 0;
-}
-
-.Investment .Investment-item .Investment-info .preview-link,
-.Investment .Investment-item .Investment-info .details-link {
-  font-size: 24px;
-  color: #fff;
-}
-
-.Investment .Investment-item .Investment-info .preview-link:hover,
-.Investment .Investment-item .Investment-info .details-link:hover {
-  color: #061;
-}
-
-.Investment .Investment-item .Investment-info .details-link {
-  right: 10px;
-}
-
-.Investment .Investment-item .Investment-links {
-  opacity: 0;
-  left: 0;
-  right: 0;
-  text-align: center;
-  z-index: 3;
-  position: absolute;
-  transition: all ease-in-out 0.3s;
-}
-
-.Investment .Investment-item .Investment-links a {
-  color: #fff;
-  margin: 0 2px;
-  font-size: 28px;
-  display: inline-block;
-  transition: 0.3s;
-}
-
-.Investment .Investment-item .Investment-links a:hover {
-  color: #57e76f;
-}
-
-.Investment .Investment-item:hover .Investment-info {
-  opacity: 1;
-  bottom: 20px;
-}
-.Investment .Investment-container .Investment-name {
-  margin: 25px 0;
-  font-size: 30px;
-}
-.Investment .Investment-container .Investment-name {
-  margin: 25px 0;
-  font-size: 30px;
-}
-/*--------------------------------------------------------------
-# Project
---------------------------------------------------------------*/
-.project{
-  padding-top: 50px;
-  padding-bottom: 50px;
-}
-.project{
-  padding-top: 50px;
-  padding-bottom: 50px;
-}
-.project .imgs-container{
-  display: flex;
-  flex-wrap: wrap;
-}
-.project .imgs-container .box{
-  overflow: hidden;
-  position: relative;
-  cursor: pointer;
-  width:calc(1200px / 4);
-  margin: 25px auto;
-}
-
-.project .imgs-container .box img{
-  max-width: 100%;
-  transition: 0.3s;
-}
-
-.project  .caption1 {
-  position: absolute;
-  right: 0;
-  padding: 10px;
-  background-color: #57e76f87;
-  transition: 0.3s;
-  bottom: -100%;
-  height: 40px;
-  border-radius: 50%;
-}
-.project  .caption2 {
-  position: absolute;
-  left: 0;
-  padding: 10px;
-  background-color: #57e76f87;
-  transition: 0.3s;
-  bottom: -100%;
-  border-radius: 50%;
-  height: 40px;
-  }
-.box:hover .caption1,.box:hover .caption2  {
+.portfolio .shuffle .box:hover .caption {
     bottom: 0;
 }
-.project  .box h4{
-    text-align: center;
-}
-.project  .box p{
-  width: 200px;
-  overflow-wrap: break-word;
-  font-size: 12px;
-  text-align: center;
-  line-height: 1.6;
-  margin: 0 auto;
+.portfolio .shuffle .box:hover img {
+    transform: rotate(5deg) scale(1.1);
 }
 
-.box:hover img {
-  transform: rotate(5deg) scale(1.1);
+.portfolio .imgs-container h4 {
+    font-weight: normal;
+    margin-bottom: 10px;
+    color: #000;
+
 }
-@media (min-width: 768px) {
-  .portfolio-view .portfolio .imgs-container .box {
-    flex-basis: 50%;
-  }
-}
-@media (min-width: 1199px) {
-  .portfolio-view .portfolio .imgs-container .box {
-    flex-basis: 25%;
-  }
+.portfolio .imgs-container p {
+    color: #3d7947;
+
 }
 /*--------------------------------------------------------------
 # Clients

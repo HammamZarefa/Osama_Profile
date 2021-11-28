@@ -80,6 +80,17 @@
     </div>
 
     <div class="form-group ml-5">
+        <label for="title" class="col-sm-2 col-form-label">Title AR</label>
+        <div class="col-sm-7">
+            <input type="text" name='title_ar' class="form-control {{$errors->first('title_ar') ? "is-invalid" : "" }} " value="{{old('title_ar') ? old('title_ar') : $banner->title_ar}}" id="title_ar" placeholder="Title AR">
+            <div class="invalid-feedback">
+                {{ $errors->first('title') }}
+            </div>
+        </div>
+    </div>
+
+
+    <div class="form-group ml-5">
         <label for="desc" class="col-sm-2 col-form-label">Desc</label>
         <div class="col-sm-7">
           <textarea name="desc" id="desc" cols="30" rows="10" class="form-control {{$errors->first('desc') ? "is-invalid" : "" }} ">{{old('desc') ? old('desc') : $banner->desc}}</textarea>
@@ -87,7 +98,15 @@
             {{ $errors->first('desc') }}    
         </div> 
         </div>
-      
+    </div>
+    <div class="form-group ml-5">
+        <label for="desc_ar" class="col-sm-2 col-form-label">Desc AR</label>
+        <div class="col-sm-7">
+            <textarea name="desc_ar" id="desc_ar" cols="30" rows="10" class="form-control {{$errors->first('desc_ar') ? "is-invalid" : "" }} ">{{old('desc_ar') ? old('desc_ar') : $banner->desc_ar}}</textarea>
+            <div class="invalid-feedback">
+                {{ $errors->first('desc_ar') }}
+            </div>
+        </div>
     </div>
 
     <div class="form-group ml-5">

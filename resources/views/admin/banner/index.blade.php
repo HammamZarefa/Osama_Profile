@@ -22,8 +22,10 @@
                   <tr>
                     <th>No.</th>
                     <th>Cover</th>
-                    <th>Title</th>
-                    <th>desc</th>
+                    <th>Title EN</th>
+                    <th>Title AR</th>
+                    <th>Desc EN</th>
+                     <th>Desc AR</th>
                     <th>link</th>
                     <th>Option</th>
                   </tr>
@@ -39,7 +41,9 @@
                         <img src="{{ asset('storage/'.$banner->cover) }}" alt="" height="200px" width="250px">
                     </td>
                     <td>{{ $banner->title }}</td>
+                      <td>{{ $banner->title_ar }}</td>
                     <td>{{Str::limit( strip_tags( $banner->desc ), 100 )}}</td>
+                      <td>{{Str::limit( strip_tags( $banner->desc_ar ), 100 )}}</td>
                     <td>{{ $banner->link }}</td>
                     <td>
                         <a href="{{route('admin.banner.edit', [$banner->id])}}" class="btn btn-info btn-sm"> Edit </a>

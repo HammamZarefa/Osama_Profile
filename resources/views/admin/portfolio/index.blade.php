@@ -41,17 +41,12 @@
                 <thead>
 
                     <tr>
-
                         <th>No.</th>
-
                         <th>Cover</th>
-
                         <th>Client</th>
-
+                        <th>Short Desc</th>
                         <th>Project Date</th>
-
                         <th>Option</th>
-
                     </tr>
 
                 </thead>
@@ -74,10 +69,11 @@
                         
                             <img src="{{ asset('storage/'.$portfolio->cover) }}" alt="" style="height: 100px; width: 200px">
                         
-                        </td> 
-                        
-                        <td>{{ $portfolio->client }}</td> 
+                        </td>
 
+
+                        <td>{{ $portfolio->client }}</td>
+                        <td>{{ $portfolio->short_desc }}</td>
                         <td>{{ $portfolio->date }}</td> 
                 
                         <td>    

@@ -46,7 +46,7 @@
 
                         <th>Cover</th>
 
-                        <th>Client</th>
+                        <th>short desc</th>
 
                         <th>Project Date</th>
 
@@ -76,7 +76,7 @@
                         
                         </td> 
                         
-                        <td>{{ $comingSoon->client }}</td>
+                        <td>{{ $comingSoon->short_desc }}</td>
 
                         <td>{{ $comingSoon->date }}</td>
                 

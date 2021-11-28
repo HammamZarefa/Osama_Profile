@@ -1,65 +1,44 @@
 @extends('layouts.front')
 
 @section('meta')
-<!-- Primary Meta Tags -->
-<meta name="description" content="{{ $general->meta_desc }}">
-<meta name="keywords" content="{{ $general->keyword }}">
-<!-- Open Graph / Facebook -->
-<meta property="og:type" content="website">
-<meta property="og:url" content="127.0.0.1:8000">
-<meta property="og:title" content="{{ $general->title }}">
-<meta property="og:description" content="{{ $general->meta_desc }}">
-<meta property="og:image" content="{{ asset('storage/'.$general->favicon) }}">
+  <!-- Primary Meta Tags -->
+  <meta name="description" content="{{ $general->meta_desc }}">
+  <meta name="keywords" content="{{ $general->keyword }}">
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="127.0.0.1:8000">
+  <meta property="og:title" content="{{ $general->title }}">
+  <meta property="og:description" content="{{ $general->meta_desc }}">
+  <meta property="og:image" content="{{ asset('storage/'.$general->favicon) }}">
 
-<!-- Twitter -->
-<meta property="twitter:card" content="summary_large_image">
-<meta property="twitter:url" content="127.0.0.1:8000">
-<meta property="twitter:title" content="{{ $general->title }}">
-<meta property="twitter:description" content="{{ $general->meta_desc }}">
-<meta property="twitter:image" content="{{ asset('storage/'.$general->favicon) }}">
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="127.0.0.1:8000">
+  <meta property="twitter:title" content="{{ $general->title }}">
+  <meta property="twitter:description" content="{{ $general->meta_desc }}">
+  <meta property="twitter:image" content="{{ asset('storage/'.$general->favicon) }}">
 
 @endsection
 
 @section('content')
-    <!-- ======= Hero Section ======= -->
-  <section id="hero">
+ {{ $local=session()->get('locale')}}
+  <!-- ======= Hero Section ======= -->
+  direction: ltr !important;
+  <section id="hero" style="direction: ltr !important;">
     <div id="heroCarousel" class="carousel slide carousel-fade" data-ride="carousel">
-
-      <div class="carousel-inner" role="listbox">
-
-        @foreach ($banner as $key => $banner)
-
-        <div class="carousel-item {{ $key == 0 ? 'active' : '' }}" style="background-image: url({{asset('storage/'.$banner->cover)}});">
-          <div class="carousel-container">
-            <div class="carousel-content animate__animated animate__fadeInUp">
-              <h2>{{ $banner->title }}</h2>
-              <p>{{ $banner->desc }}</p>
-              @isset($banner->link)
-              <div class="text-center">
-                <a href="{{ $banner->link }}" class="btn-get-started">{{ __('home.readmore') }}</a>
+        <div  style="background-image: url({{asset('storage/'.$banner[0]->cover)}});">
+            <div class="carousel-container">
+              <div class="carousel-content animate__animated animate__fadeInUp">
+                <h2>{{$local=='en'? $banner[0]->title:$banner[0]->title_ar }}</h2>
+                <p>{{ $local=='en'?$banner[0]->desc:$banner[0]->desc_ar }}</p>
+                @isset($banner[0]->link)
+                  <div class="text-center">
+                    <a href="{{ $banner[0]->link }}" class="btn-get-started">{{ __('home.readmore') }}</a>
+                  </div>
+                @endisset
               </div>
-              @endisset
             </div>
           </div>
-        </div>
-
-        @endforeach
-
-
-      </div>
-
-      <a class="carousel-control-prev" href="#heroCarousel" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon icofont-simple-left" aria-hidden="true"></span>
-        <span class="sr-only">{{ __('home.previous') }}</span>
-      </a>
-
-      <a class="carousel-control-next" href="#heroCarousel" role="button" data-slide="next">
-        <span class="carousel-control-next-icon icofont-simple-right" aria-hidden="true"></span>
-        <span class="sr-only">{{ __('home.next') }}</span>
-      </a>
-
-      <ol class="carousel-indicators" id="hero-carousel-indicators"></ol>
-
     </div>
   </section><!-- End Hero -->
 
@@ -75,12 +54,12 @@
 
         <div class="row content">
           <div class="col-lg-6" data-aos="fade-right">
-            <h2>{{ $about->title }}</h2>
-            <h3>{{ $about->subject }}</h3>
+            <h2> {{$local=='en'? $about->title:$about->title_ar }}</h2>
+            <h3>{{$local=='en'? $about->subject:$about->subject_ar }}</h3>
           </div>
           <div class="col-lg-6 pt-4 pt-lg-0" data-aos="fade-left">
             <p>
-              {!! $about->desc !!}
+              {!!$local=='en'? $about->desc:$about->desc_ar  !!}
             </p>
           </div>
         </div>
@@ -94,13 +73,12 @@
 
         <div class="section-title">
           <h2><strong>{{ __('home.services') }}</strong></h2>
-          <p>Laborum repudiandae omnis voluptatum consequatur mollitia ea est voluptas ut</p>
         </div>
 
         <div class="row">
 
           @foreach ($service as $service)
-              <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="100">
+            <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="100">
               <div class="icon-box iconbox-blue">
                 <div class="icon">
                   <svg width="100" height="100" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
@@ -108,8 +86,8 @@
                   </svg>
                   <i class="{{ $service->icon }}"></i>
                 </div>
-                <h4><a href="{{ route('serviceshow',$service->slug) }}">{{ $service->title }}</a></h4>
-                <p>{{ $service->quote }}</p>
+                <h4><a href="{{ route('serviceshow',$service->slug) }}">{{ $local=='en'? $service->title:$service->title_ar }}</a></h4>
+                <p>{{$local=='en'? $service->quote:$service->quote_ar }}</p>
               </div>
             </div>
           @endforeach
@@ -119,123 +97,112 @@
       </div>
     </section><!-- End Services Section -->
 
-  <!-- ======= Portfolio Section ======= -->
-  <section id="portfolio" class="portfolio">
+    <!-- ======= Portfolio Section ======= -->
+    <section id="portfolio" class="portfolio">
       <div class="container">
-
         <div class="section-title" data-aos="fade-up">
           <h2>{{ __('home.portfolio') }}</h2>
+          <ul class="shuffle">
+            <!-- portfolio item 1 -->
+            @foreach ($pcategories as $category)
+              <li data-filter=".{{ $category->id }}">{{$local=='en'? $category->name :$category->name_ar}}</li>
+              <div class="imgs-container" data-aos="fade-up">
+                @foreach ($portfolio as $portfoli)
+                  @if($category->id ==$portfoli->pcategory_id)
+                    <div class="box">
+                      <a href="{{ route('portfolioshow',$portfoli->slug) }}">
+                        <img src="{{ asset('storage/'.$portfoli->cover) }}" class="img-fluid" alt="">
+                        <h4>{{ $local=='en'?$portfoli->name:$portfoli->name_ar }}</h4>
+                        <p>{{$local=='en'?$portfoli->short_desc:$portfoli->short_desc_ar}}</p>
+                      </a>
+                    </div>
+                  @endif
+                @endforeach
+              </div>
+            @endforeach
+          </ul>
         </div>
-
-        <div class="row" data-aos="fade-up">
-          <div class="col-lg-12 d-flex justify-content-center">
-            <ul id="portfolio-flters">
-              <!-- {{--<li data-filter="*" class="filter-active">All</li>--}} -->
-              @foreach ($pcategories as $category)
-                <li data-filter=".{{ $category->id }}">{{ $category->name }}</li>
-                {{--<div class="row portfolio-container" data-aos="fade-up">--}}
-          @foreach ($portfolio as $portfoli)
-            @if($category->id ==$portfoli->pcategory_id)
-          <div class="col-lg-3 col-md-3 portfolio-item {{ $portfoli->pcategory_id }}">
-            <img src="{{ asset('storage/'.$portfoli->cover) }}" class="img-fluid" alt="">
-            <div class="portfolio-info">
-              <a href="{{ asset('storage/'.$portfoli->cover) }}" data-gall="portfolioGallery" class="venobox preview-link" title="{{ $portfoli->name }}"><i class="bx bx-plus"></i></a>
-              <a href="{{ route('portfolioshow',$portfoli->slug) }}" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-            </div>
-            <h5 class="portfolio-name">{{ $portfoli->name }}</h5>
-            {!!$portfoli->desc!!}
-          </div>
-
-              @endif
-          @endforeach
-          @endforeach
-            </ul>
-        </div>           
-
-          </div>
-        {{--</div>--}}
       </div>
-    </section><!-- End Portfolio Section -->
-      <!-- ======= Investment ideas ======= -->
-  
-    <section id="Investment" class="Investment" style="padding:0">
-      <div class="container">
+    </section>
 
+
+    <!-- End Portfolio Section -->
+    <!-- ======= Investment ideas ======= -->
+    <section id="portfolio" class="portfolio">
+      <div class="container">
         <div class="section-title" data-aos="fade-up">
           <h2>{{ __('home.investmentideas') }}</h2>
-        </div>
+          <ul class="shuffle">
+            <!-- portfolio item 1 -->
 
-        <div class="row" data-aos="fade-up">
-          <div class="col-lg-12 d-flex justify-content-center">
-            <ul id="Investment-flters">
-
+            <div class="imgs-container" data-aos="fade-up">
               @foreach ($investment as $investment)
-       
-          <div class="col-lg-3 col-md-3 Investment-item {{ $investment->pcategory_id }}">
-            <img src="{{ asset('storage/'.$investment->cover) }}" class="img-fluid" alt="">
-            <div class="Investment-info">
-              <a href="{{ asset('storage/'.$investment->cover) }}" data-gall="portfolioGallery" class="venobox preview-link" title="{{ $investment->name }}"><i class="bx bx-plus"></i></a>
-              <a href="{{ route('portfolioshow',$investment->slug) }}" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+
+                <div class="box">
+                  <a href="{{ route('portfolioshow',$investment->slug) }}">
+                    <img src="{{ asset('storage/'.$investment->cover) }}" class="img-fluid" alt="">
+                    <h4>{{ $local=='en'?$investment->name:$investment->name_ar }}</h4>
+                    <p>{{$local=='en'?$investment->short_desc:$investment->short_desc_ar}}</p>
+                  </a>
+                </div>
+
+              @endforeach
             </div>
-            <h4>{{ $investment->name }}</h4>
-              <p>{{ $investment->desc }}</p>
-          </div>
-            @endforeach
-          <hr>
-            </ul>
-          </div>
-          </div>
-        {{--</div>--}}
+          </ul>
+        </div>
       </div>
     </section>
     <!-- Investment ideas -->
     <!-- Project for Sale -->
-    <div class="project" >
-    <div class="section-title" data-aos="fade-up">
+    <section id="portfolio" class="portfolio">
+      <div class="container">
+        <div class="section-title" data-aos="fade-up">
           <h2>{{ __('home.projectforsale') }} </h2>
+          <ul class="shuffle">
+            <!-- portfolio item 1 -->
+
+            <div class="imgs-container" data-aos="fade-up">
+              @foreach ($comingSoon as $comingSoon)
+
+                <div class="box">
+                  <a href="{{ route('portfolioshow',$comingSoon->slug) }}">
+                    <img src="{{ asset('storage/'.$comingSoon->cover) }}" class="img-fluid" alt="">
+                    <h4>{{$local=='en'? $comingSoon->name:$comingSoon->name_ar }}</h4>
+                    <p>{{$local=='en'?$comingSoon->short_desc:$comingSoon->short_desc_ar}}</p>
+                  </a>
+                </div>
+
+              @endforeach
+            </div>
+          </ul>
         </div>
-      <div class="imgs-container">
-        @foreach ($comingSoon as $comingSoon)
-        <div class="box" >
-          <img src="{{ asset('storage/'.$comingSoon->cover) }}" alt="" />
-          <!-- <img v-lazy="'img/shuffle-01.jpg'" alt="" /> -->
-          <div class="caption1">
-          <a href="{{ asset('storage/'.$comingSoon->cover) }}" data-gall="portfolioGallery" class="venobox preview-link" title="{{ $comingSoon->name }}"><i class="bx bx-plus"></i></a>
-          </div>
-          <div class="caption2">
-          <a href="{{ route('portfolioshow',$comingSoon->slug) }}" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-          </div>
-          <h4>{{$comingSoon->name}}</h4>
-            <p >{{ $comingSoon->desc }}</p>
-        </div>
-        @endforeach
       </div>
-    </div>
+    </section>
     <!-- End Project Sale -->
     <!-- ======= Our Clients Section ======= -->
     {{--<section id="clients" class="clients">--}}
-      {{--<div class="container" data-aos="fade-up">--}}
+    {{--<div class="container" data-aos="fade-up">--}}
 
-        {{--<div class="section-title">--}}
-          {{--<h2>Partners</h2>--}}
-        {{--</div>--}}
+    {{--<div class="section-title">--}}
+    {{--<h2>Partners</h2>--}}
+    {{--</div>--}}
 
-        {{--<div class="row no-gutters clients-wrap clearfix" data-aos="fade-up">--}}
+    {{--<div class="row no-gutters clients-wrap clearfix" data-aos="fade-up">--}}
 
-          {{--@foreach ($partner as $partner)--}}
-          {{--<div class="col-lg-3 col-md-4 col-6">--}}
-          {{--<div class="col-lg-3 col-md-4col-6">--}}
-            {{--<div class="client-logo">--}}
-              {{--<a href="{{ $partner->link }}" target="_blank" rel="noopener noreferrer">--}}
-                {{--<img src="{{ asset('storage/'.$partner->cover) }}" class="img-fluid" alt="{{ $partner->name }}">--}}
-              {{--</a>--}}
-            {{--</div>--}}
-          {{--</div>--}}
-          {{--@endforeach--}}
+    {{--@foreach ($partner as $partner)--}}
+    {{--<div class="col-lg-3 col-md-4 col-6">--}}
+    {{--<div class="col-lg-3 col-md-4col-6">--}}
+    {{--<div class="client-logo">--}}
+    {{--<a href="{{ $partner->link }}" target="_blank" rel="noopener noreferrer">--}}
+    {{--<img src="{{ asset('storage/'.$partner->cover) }}" class="img-fluid" alt="{{ $partner->name }}">--}}
+    {{--</a>--}}
+    {{--</div>--}}
+    {{--</div>--}}
+    {{--@endforeach--}}
 
-        {{--</div>--}}
+    {{--</div>--}}
 
-      {{--</div>--}}
+    {{--</div>--}}
     {{--</section><!-- End Our Clients Section -->--}}
 
   </main><!-- End #main -->

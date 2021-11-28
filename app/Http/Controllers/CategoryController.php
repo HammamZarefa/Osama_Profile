@@ -39,7 +39,9 @@ class CategoryController extends Controller
         \Validator::make($request->all(), [
             "name" => "required",
             "keyword" => "required",
-            "meta_desc" => "required"     
+            "meta_desc" => "required",
+            "name_ar" => "required",
+
         ])->validate();
         
         $category = new Category();
@@ -47,6 +49,8 @@ class CategoryController extends Controller
         $category->slug = \Str::slug($request->name);
         $category->keyword = $request->keyword;
         $category->meta_desc = $request->meta_desc;
+        $category->name_ar = $request->name_ar;
+
 
         if ( $category->save()) {
 
@@ -95,7 +99,9 @@ class CategoryController extends Controller
         \Validator::make($request->all(), [
             "name" => "required",
             "keyword" => "required",
-            "meta_desc" => "required"     
+            "meta_desc" => "required" ,
+            "name_ar" => "required",
+
         ])->validate();
 
         $category = Category::findOrFail($id);
@@ -103,6 +109,9 @@ class CategoryController extends Controller
         $category->slug = \Str::slug($request->name);
         $category->keyword = $request->keyword;
         $category->meta_desc = $request->meta_desc;
+        $category->name_ar = $request->name_ar;
+
+
 
         if ( $category->save()) {
 

@@ -43,15 +43,22 @@ class PortfolioController extends Controller
         \Validator::make($request->all(), [
             "cover" => "required",
             "category" => "required",
-            "desc" => "required"
+            "short_desc" => "required",
+            "short_desc_ar" => "required",
+            "desc" => "required",
+            "desc_ar" => "required",
         ])->validate();
 
         $portfolio = new Portfolio();
         $portfolio->pcategory_id = $request->category;
         $portfolio->name = $request->name;
+        $portfolio->name_ar = $request->name_ar;
         $portfolio->slug = \Str::slug($request->name);
         $portfolio->client = $request->client;
+        $portfolio->short_desc = $request->short_desc;
+        $portfolio->short_desc_ar = $request->short_desc_ar;
         $portfolio->desc = $request->desc;
+        $portfolio->desc_ar = $request->desc_ar;
         $portfolio->date = $request->date;
 
         $cover = $request->file('cover');
@@ -109,14 +116,22 @@ class PortfolioController extends Controller
     {
         \Validator::make($request->all(), [
             "category" => "required",
-            "desc" => "required"
+            "short_desc" => "required",
+            "short_desc_ar" => "required",
+            "desc" => "required",
+            "desc_ar" => "required",
         ])->validate();
 
         $portfolio = Portfolio::findOrFail($id);
         $portfolio->pcategory_id = $request->category;
         $portfolio->name = $request->name;
+        $portfolio->name_ar = $request->name_ar;
+        $portfolio->slug = \Str::slug($request->name);
         $portfolio->client = $request->client;
+        $portfolio->short_desc = $request->short_desc;
+        $portfolio->short_desc_ar = $request->short_desc_ar;
         $portfolio->desc = $request->desc;
+        $portfolio->desc_ar = $request->desc_ar;
         $portfolio->date = $request->date;
 
 

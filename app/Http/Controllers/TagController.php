@@ -45,6 +45,7 @@ class TagController extends Controller
         
         $tag = new Tag();
         $tag->name = $request->name;
+        $tag->name_ar = $request->name_ar;
         $tag->slug = \Str::slug($request->name);
         $tag->keyword = $request->keyword;
         $tag->meta_desc = $request->meta_desc;
@@ -100,6 +101,7 @@ class TagController extends Controller
         
         $tag = Tag::findOrFail($id);
         $tag->name = $request->name;
+        $tag->name_ar = $request->name_ar;
         $tag->slug = \Str::slug($request->name);
         $tag->keyword = $request->keyword;
         $tag->meta_desc = $request->meta_desc;

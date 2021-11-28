@@ -2,7 +2,7 @@
 
 @section('content')
 <main id="main">
-
+{{ $local=session()->get('locale')}}
     <!-- ======= Breadcrumbs ======= -->
     <section id="breadcrumbs" class="breadcrumbs">
       <div class="container">
@@ -32,8 +32,8 @@
               </svg>
               <i class="{{ $service->icon }}"></i>
             </div>
-            <h4><a href="{{ route('serviceshow',$service->slug) }}">{{ $service->title }}</a></h4>
-            <p>{{ $service->quote }}</p>
+            <h4><a href="{{ route('serviceshow',$service->slug) }}">{{$local=='en'? $service->title: $service->title_ar}}</a></h4>
+            <p>{{ $local=='en'?$service->quote: $service->quote}}</p>
           </div>
         </div>
         @endforeach

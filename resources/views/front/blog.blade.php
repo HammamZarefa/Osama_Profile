@@ -5,18 +5,18 @@ Blog -
 @endsection
 
 @section('content')
+  {{ $local=session()->get('locale')}}
 <main id="main">
 
     <!-- ======= Breadcrumbs ======= -->
     <section id="breadcrumbs" class="breadcrumbs">
       <div class="container">
-
         <div class="d-flex justify-content-between align-items-center">
           @isset($category)
-        <h2>{{ __('home.blogcategory') }}: {{ $category->name }}</h2>
+        <h2>{{ __('home.blogcategory') }}: {{ $local=='en'?$category->name:$category->name_ar }}</h2>
         @endisset
         @isset($tag)
-        <h2>{{ __('home.blogtah') }}: {{ $tag->name }}</h2>
+        <h2>{{ __('home.blogtah') }}: {{ $local=='en'?$tag->name:$tag->name_ar }}</h2>
         @endisset
         @isset($query)
         <h2>Hasil Pencarian: {{ $query }}</h2>
@@ -29,7 +29,6 @@ Blog -
             <li>{{ __('home.blog') }}</li>
           </ol>
         </div>
-
       </div>
     </section><!-- End Breadcrumbs -->
 
@@ -45,11 +44,11 @@ Blog -
             <article class="entry" data-aos="fade-up">
 
               <div class="entry-img">
-                <img src="{{ asset('storage/'.$post->cover) }}" alt="{{ $post->title }}" class="img-fluid">
+                <img src="{{ asset('storage/'.$post->cover) }}" alt="{{ $local=='en'?$post->title:$post->title_ar }}" class="img-fluid">
               </div>
 
               <h2 class="entry-title">
-                <a href="{{ route('blogshow',$post->slug) }}">{{ $post->title }}</a>
+                <a href="{{ route('blogshow',$post->slug) }}">{{ $local=='en'?$post->title:$post->tilte_ar }}</a>
               </h2>
 
               <div class="entry-meta">
@@ -62,7 +61,7 @@ Blog -
 
               <div class="entry-content">
                 <p>
-                  {{ Str::limit( strip_tags( $post->body ), 250 ) }}
+                  {{ Str::limit( strip_tags($local=='en'? $post->body:$post->body_ar ), 250 ) }}
                 </p>
                 <div class="read-more">
                   <a href="{{ route('blogshow',$post->slug) }}">{{ __('home.readmore') }}</a>
@@ -97,7 +96,7 @@ Blog -
               <div class="sidebar-item categories">
                 <ul>
                   @foreach ($categories as $category)
-                  <li><a href="{{ route('category',$category->slug) }}">{{ $category->name }} <span>({{ $category->count() }})</span></a></li>
+                  <li><a href="{{ route('category',$category->slug) }}">{{ $local=='en'?$category->name:$category->name_ar }} <span>({{ $category->count() }})</span></a></li>
                   @endforeach
                   
                 </ul>
@@ -110,7 +109,7 @@ Blog -
                 @foreach ($recent as $recent)
                 <div class="post-item clearfix">
                   <img src="{{ asset('storage/'.$recent->cover) }}" alt="">
-                  <h4><a href="{{route('blogshow',$recent->slug)}}">{{ $recent->title }}</a></h4>
+                  <h4><a href="{{route('blogshow',$recent->slug)}}">{{ $local=='en'?$recent->title:$recent->title_ar }}</a></h4>
                   <time datetime="2020-01-01">{{ Carbon\Carbon::parse($recent->created_at)->format("d F, Y") }}</time>
                 </div>
                 @endforeach
@@ -121,7 +120,7 @@ Blog -
               <div class="sidebar-item tags">
                 <ul>
                   @foreach ($tags as $tag)
-                   <li><a href="{{ route('tag',$tag->slug) }}">{{ $tag->name }}</a></li>
+                   <li><a href="{{ route('tag',$tag->slug) }}">{{$local=='en'? $tag->name :$tag->name_ar}}</a></li>
                   @endforeach 
                 </ul>
 

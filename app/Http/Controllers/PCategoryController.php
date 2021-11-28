@@ -33,6 +33,7 @@ class PCategoryController extends Controller
         
         $pcategory = new Pcategory();
         $pcategory->name = $request->name;
+        $pcategory->name_ar = $request->name_ar;
 
         if ( $pcategory->save()) {
 
@@ -84,6 +85,7 @@ class PCategoryController extends Controller
         
         $pcategory = Pcategory::findOrFail($id);
         $pcategory->name = $request->name;
+        $pcategory->name_ar = $request->name_ar;
 
         if ( $pcategory->save()) {
 

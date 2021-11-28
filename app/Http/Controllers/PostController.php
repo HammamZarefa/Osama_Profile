@@ -55,6 +55,8 @@ class PostController extends Controller
         $data = $request->all();
 
         $data['slug'] = \Str::slug(request('title'));
+        $data['title_ar'] =$request->title_ar;
+        $data['body_ar']=$request->body_ar;
 
         $data['category_id'] = request('category');
 
@@ -69,6 +71,7 @@ class PostController extends Controller
 
         $data['cover'] = $cover_path;
         }
+
 
         $post = Post::create($data);
 
@@ -121,9 +124,12 @@ class PostController extends Controller
     {
         \Validator::make($request->all(), [
             "title" => "required",
+            "title_ar" => "required",
+            "cover" => "required",
             "body" => "required",
+            "body_ar" => "required",
             "category" => "required",
-            "tags" => "array|required",  
+            "tags" => "array|required",
             "keyword" => "required",
             "meta_desc" => "required"
         ])->validate();
@@ -135,7 +141,8 @@ class PostController extends Controller
         $data['slug'] = \Str::slug(request('title'));
 
         $data['category_id'] = request('category');
-
+        $data['title_ar'] =(request('title_ar'));
+        $data['body_ar']=(request('body_ar'));
         $cover = $request->file('cover');
 
         if($cover){

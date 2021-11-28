@@ -42,6 +42,9 @@ class GeneralController extends Controller
         $general->title = $request->title;
         $general->address1 = $request->address1;
         $general->address2 = $request->address2;
+        $general->title_ar = $request->title_ar;
+        $general->address1_ar = $request->address1_ar;
+        $general->address2_ar = $request->address2_ar;
         $general->phone = $request->phone;
         $general->email = $request->email;
         $general->twitter = $request->twitter;
@@ -108,6 +111,9 @@ class GeneralController extends Controller
         $about->title = $request->title;
         $about->subject = $request->subject;
         $about->desc = $request->desc;
+        $about->title_ar = $request->title_ar;
+        $about->subject_ar = $request->subject_ar;
+        $about->desc_ar = $request->desc_ar;
 
         if ( $about->save()) {
 

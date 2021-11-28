@@ -37,6 +37,14 @@
                 {{ $errors->first('name') }}    
             </div> 
             </div>
+
+            <div class="form-group mx-sm-3 mb-2">
+                <label for="name" class="sr-only">Name AR</label>
+                <input type="text" name="name_ar" class="form-control {{$errors->first('name_ar') ? "is-invalid" : "" }}" value="{{old('name_ar')}}" id="name_ar" placeholder="Name AR" required>
+                <div class="invalid-feedback">
+                    {{ $errors->first('name_ar') }}
+                </div>
+            </div>
             <button type="submit" class="btn btn-primary mb-2">Create Category</button>
           </form>
 
@@ -54,6 +62,7 @@
 
                         <th>No.</th>
 
+                        <th>Name</th>
                         <th>Name</th>
 
                         <th>Option</th>
@@ -76,8 +85,8 @@
              
                         <td>{{ ++$no }}</td>  
                 
-                        <td>{{ $pcategory->name }}</td> 
-                
+                        <td>{{ $pcategory->name }}</td>
+
                         <td>    
                 
                             <a href="{{route('admin.pcategory.edit', [$pcategory->id])}}" class="btn btn-info btn-sm"> Edit </a>

@@ -17,6 +17,10 @@ class CreateInvestmentsTable extends Migration
             $table->id();
             $table->foreignId('pcategory_id');
             $table->string('name');
+            $table->string('name_ar');
+            $table->string('short_desc');
+            $table->string('short_desc_ar');
+            $table->string('desc_ar');
             $table->string('slug');
             $table->string('cover');
             $table->string('client');

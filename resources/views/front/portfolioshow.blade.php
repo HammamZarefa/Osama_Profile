@@ -2,7 +2,7 @@
 
 @section('content')
 <main id="main">
-
+{{ $local=session()->get('locale')}}
     <!-- ======= Breadcrumbs ======= -->
     <section id="breadcrumbs" class="breadcrumbs">
       <div class="container">
@@ -30,7 +30,7 @@
           <div class="portfolio-info">
             <h3>{{ __('home.projectinformation') }}</h3>
             <ul>
-              <li><strong>{{ __('home.category') }}</strong>:  {{ $portfolio->pcategory->name }}</li>
+              <li><strong>{{ __('home.category') }}</strong>:  {{ $local=='en'?$portfolio->pcategory->name:$portfolio->pcategory->name_ar }}</li>
               <li><strong>{{ __('home.client') }}</strong>: {{ $portfolio->client }}</li>
               <li><strong>{{ __('home.projectdate') }}</strong>: {{ Carbon\Carbon::parse($portfolio->date)->format("d F, Y") }}</li>
             </ul>
@@ -39,9 +39,9 @@
         </div>
 
         <div class="portfolio-description">
-          <h2>{{ $portfolio->name }}</h2>
+          <h2>{{ $local=='en'?$portfolio->name:$portfolio->name_ar }}</h2>
           <p>
-            {!! $portfolio->desc !!}
+            {!! $local=='en'?$portfolio->desc:$portfolio->desc_ar !!}
           </p>
         </div>
 
