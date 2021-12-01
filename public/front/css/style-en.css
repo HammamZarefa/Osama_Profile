@@ -554,9 +554,16 @@ align-items: center;
     text-decoration: none;
 }
 
-#hero .carousel-inner .carousel-item {
+#hero .carousel-inner .carousel-item-active {
     transition-property: opacity;
-    background-position: center top;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
 }
 
 #hero .carousel-inner .carousel-item,
@@ -896,32 +903,21 @@ section {
     padding: 0;
 }
 .portfolio .shuffle li {
-    width: 125px;
+
     height: 65px;
     margin: 0 auto;
-    background-color: #1bbd36;
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 3px;
-    color: #fff;
+    color: #1bbd36;
     position: relative;
     font-weight: bold;
     transition: 0.3s;
-    font-size: 14px;
-    box-shadow: 1px 3px 20px #1bbd36;
+    font-size: 25px;
+    opacity: .8;
 }
-.portfolio .shuffle li::after {
-    content: '';
-    position: absolute;
-    border-width: 62px;
-    border-color: #1bbd36 transparent transparent transparent;
-    border-style: solid;
-    top: 64px;
-    left: 0;
-    border-radius: 2px;
-    z-index: 2;
-}
+
 .portfolio .imgs-container {
     display: flex;
     flex-wrap: wrap;

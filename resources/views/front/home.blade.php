@@ -26,9 +26,10 @@
   direction: ltr !important;
   <section id="hero" style="direction: ltr !important;">
     <div id="heroCarousel" class="carousel slide carousel-fade" data-ride="carousel">
-        <div  style="background-image: url({{asset('storage/'.$banner[0]->cover)}});">
+    <div class="carousel-inner" role="listbox">
+        <div class="carousel-item-active"  style="background-image: url({{asset('storage/'.$banner[0]->cover)}});">
             <div class="carousel-container">
-              <div class="carousel-content animate__animated animate__fadeInUp">
+              <div class="carousel-content animate_animated animate_fadeInUp">
                 <h2>{{$local=='en'? $banner[0]->title:$banner[0]->title_ar }}</h2>
                 <p>{{ $local=='en'?$banner[0]->desc:$banner[0]->desc_ar }}</p>
                 @isset($banner[0]->link)
@@ -38,6 +39,7 @@
                 @endisset
               </div>
             </div>
+          </div>
           </div>
     </div>
   </section><!-- End Hero -->
